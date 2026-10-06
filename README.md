@@ -153,6 +153,8 @@ Start with the [local VLM example](examples/vlm_extract.py),
 [Gradio Space source and deployment guide](spaces/receipt-eval/DEPLOY.md).
 [Plan for a separate image-to-fields Space](task_plan.md) documents the next
 step, including model feasibility, privacy, measurement and launch gates.
+A [local image-to-fields prototype](spaces/receipt-inference/DEPLOY.md) is now
+checked in; its model download and real inference are **not yet verified**.
 The existing Space is an interactive scorer, not a hosted VLM; publish and verify it
 before advertising a live demo. The evaluator measures
 exact receipt matches and per-field accuracy on your own labeled JSONL; the

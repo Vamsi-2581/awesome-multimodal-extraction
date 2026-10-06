@@ -1,6 +1,6 @@
 # Plan: image-to-fields Hugging Face Space and adoption loop
 
-Status: planning complete; implementation and publication not started. Owner: Shivam. Scope: a **new** image inference Space that complements the existing offline evaluator, not a replacement for it. No Space URL, model-quality result, or visitor growth is claimed yet.
+Status: source prototype started; offline parser/backend tests pass, but HF DNS blocks model/card/runtime verification, so deployment and publication remain gated. Owner: Shivam. Scope: a **new** image inference Space that complements the existing offline evaluator, not a replacement for it. No Space URL, model-quality result, or visitor growth is claimed yet.
 
 ## Product promise and boundaries
 
