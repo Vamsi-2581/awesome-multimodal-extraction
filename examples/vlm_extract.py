@@ -1,28 +1,45 @@
-"""Structured extraction from an image with a vision-language model (Qwen2.5-VL).
+"""Extract receipt fields with Hugging Face's SmolVLM (local inference).
 
-Setup:
-    pip install transformers accelerate qwen-vl-utils pillow torch
+Setup (CPU is possible but slow; a GPU is recommended):
+    uv pip install transformers torch pillow accelerate
+
+Run:
+    python examples/vlm_extract.py path/to/receipt.jpg
+
+Review model output before using it: a VLM can hallucinate fields. The output is
+not guaranteed to be valid JSON; use the offline eval for measured accuracy.
 """
-from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
-from qwen_vl_utils import process_vision_info
+import argparse
 
-model_id = "Qwen/Qwen2.5-VL-7B-Instruct"
-model = Qwen2_5_VLForConditionalGeneration.from_pretrained(model_id, device_map="auto")
-processor = AutoProcessor.from_pretrained(model_id)
+from PIL import Image
+from transformers import AutoModelForImageTextToText, AutoProcessor
 
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {"type": "image", "image": "receipt.jpg"},
-            {"type": "text", "text": "Extract vendor, date, and total as JSON."},
-        ],
-    }
-]
+MODEL_ID = "HuggingFaceTB/SmolVLM-Instruct"
 
-text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-images, videos = process_vision_info(messages)
-inputs = processor(text=[text], images=images, videos=videos, return_tensors="pt").to(model.device)
 
-out = model.generate(**inputs, max_new_tokens=256)
-print(processor.batch_decode(out, skip_special_tokens=True)[0])
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("image", help="Path to a local receipt image")
+    args = parser.parse_args()
+
+    model = AutoModelForImageTextToText.from_pretrained(MODEL_ID, device_map="auto")
+    processor = AutoProcessor.from_pretrained(MODEL_ID)
+    with Image.open(args.image) as source:
+        image = source.convert("RGB")
+    messages = [{"role": "user", "content": [
+        {"type": "image"},
+        {"type": "text", "text": (
+            'Read this receipt. Return only a JSON object with keys "vendor", '
+            '"date" (YYYY-MM-DD), and "total" (decimal string, no currency symbol). '
+            "Use null when a field is not visible; do not guess."
+        )},
+    ]}]
+    prompt = processor.apply_chat_template(messages, add_generation_prompt=True)
+    inputs = processor(text=prompt, images=[image], return_tensors="pt").to(model.device)
+    output = model.generate(**inputs, max_new_tokens=128, do_sample=False)
+    generated = output[:, inputs["input_ids"].shape[-1]:]
+    print(processor.batch_decode(generated, skip_special_tokens=True)[0])
+
+
+if __name__ == "__main__":
+    main()

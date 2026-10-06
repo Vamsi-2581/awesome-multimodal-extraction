@@ -1,0 +1,2 @@
+{"id":"synthetic-1","expected":{"vendor":"Corner Shop","date":"2026-01-02","total":"12.50"},"predicted":{"vendor":" corner  shop ","date":"2026-01-02","total":12.5}}
+{"id":"synthetic-2","expected":{"vendor":"Market","date":"2026-01-03","total":"9.99"},"predicted":{"vendor":"Market","date":"2026-01-03","total":"8.99"}}
