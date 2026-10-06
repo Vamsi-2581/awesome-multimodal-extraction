@@ -1,6 +1,6 @@
 # Plan: image-to-fields Hugging Face Space and adoption loop
 
-Status: source prototype started; offline parser/backend tests pass, but HF DNS blocks model/card/runtime verification, so deployment and publication remain gated. Owner: Shivam. Scope: a **new** image inference Space that complements the existing offline evaluator, not a replacement for it. No Space URL, model-quality result, or visitor growth is claimed yet.
+Status: source prototype ready for offline checks; HF connectivity works via Walmart sysproxy and cached token authenticates, but Hugging Face returned HTTP 402 for free Gradio cpu-basic Space creation (PRO subscription required). Deployment blocked pending explicit approval for paid hosting or a separate browser-only static Space. Owner: Shivam. Scope: a **new** image inference Space that complements the existing offline evaluator, not a replacement for it. No Space URL, model-quality result, or visitor growth is claimed yet.
 
 ## Product promise and boundaries
 
@@ -42,5 +42,6 @@ Estimated effort **after feasibility**: 1–2 days for minimal image demo, 1–2
 
 ## Known blockers / errors
 
-- Earlier attempt to reach `huggingface.co` from this machine failed DNS lookup; model/API/runtime/license cannot be verified here yet. Recheck on approved network before implementation or deployment.
+- Direct DNS lookup still fails, but Hugging Face HTTP works through Walmart's sysproxy (`HTTPS_PROXY=http://sysproxy.wal-mart.com:8080`); cached HF token authenticates as Shivamnegi92. Model metadata/license checked, but actual inference has not been run.
+- Hugging Face rejected Gradio cpu-basic Space creation with HTTP 402 on 2026-10-06: free Gradio/Docker hosting requires a PRO subscription. No Space was created and no paid option was selected. Need explicit subscription approval or a different browser-only static demo.
 - Current branch has local unpushed commits for the evaluator and CPU-only scorer Space; deploy only after reviewed code is pushed and verified.
