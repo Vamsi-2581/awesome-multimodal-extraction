@@ -148,8 +148,11 @@ The academic line this list grew from: entity extraction from image-text pairs.
 
 ## Try It and Measure It
 
-Start with the [local VLM example](examples/vlm_extract.py) and
-[offline receipt-field evaluator](examples/README.md). The evaluator measures
+Start with the [local VLM example](examples/vlm_extract.py),
+[offline receipt-field evaluator](examples/README.md), and the
+[Gradio Space source and deployment guide](spaces/receipt-eval/DEPLOY.md).
+The Space is an interactive scorer, not a hosted VLM; publish and verify it
+before advertising a live demo. The evaluator measures
 exact receipt matches and per-field accuracy on your own labeled JSONL; the
 checked-in synthetic example demonstrates the format only. No benchmark result
 is claimed without a labeled dataset, defined split, and measured run.
