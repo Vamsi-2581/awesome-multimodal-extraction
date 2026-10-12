@@ -8,17 +8,31 @@ This is a practical plan for making **Awesome Multimodal Extraction** easier to 
 
 The differentiator is the bridge between the multimodal-NER research lineage and today's VLM/document-AI workflows, with runnable examples and link-checked curation. Keep that promise consistent in the repository description, README opening, social posts, and contribution requests.
 
-## What similar successful projects teach us
+The repository currently has **2 stars, 0 forks, and no release tags** (checked 2026-10-11); these are a baseline snapshot, not success measures or proof of quality. It has link-check and offline-test workflows, runnable examples, and clear limits on its synthetic evaluation. The README task guide is a useful starting point. One conspicuous field gap: practical users still cannot quickly compare source evidence/coordinates, table and reading-order fidelity, multilingual/handwriting support, privacy and execution mode, or evaluation methodology across tools. The release improves guidance on those gaps; a validated per-tool matrix and failure gallery remain future work.
 
-Projects such as [Docling](https://github.com/docling-project/docling), [Marker](https://github.com/datalab-to/marker), [olmOCR](https://github.com/allenai/olmocr), [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR), and [MinerU](https://github.com/opendatalab/MinerU) show repeatable *product patterns*, not a recipe for copying their size or claims:
+## What already works
 
-- A clear input-to-output promise and a task-based README front door.
-- Runnable quickstarts, visible outputs, and honest limitations.
-- Documentation about integrations, formats, licenses, hardware, and evaluation.
-- Maintenance signals that matter: releases, working links, responsive reviews, and reproducible tests.
-- A specific use case often gets remembered more easily than an undifferentiated list.
+- Breadth across OCR/document AI, VLMs, charts, audio/video, and multimodal NER.
+- A task decision flowchart and local examples.
+- Offline receipt evaluator with synthetic data clearly labeled as illustrative.
+- Link and Awesome-style CI, plus contribution guidance.
 
-These repositories are adjacent exemplars, not all direct competitors or live trend rankings. Stars change over time and reflect many factors; do not present them as evidence of quality. See [field and repo review](findings.md) for comparison context.
+These are useful foundations. Do not represent synthetic sample scores as model performance or claim a live inference demo when none is verified.
+
+## What the field still needs—and what this repo could own
+
+The repository is not missing yet another broad model inventory. A practitioner still has to open many projects to learn whether they produce page coordinates, preserve table structure and reading order, handle handwriting or multilingual text, run offline, or permit a given use. These are the biggest useful gaps to address:
+
+1. **Evidence/provenance:** where did each extracted field come from? Surface page/frame, bounding box and coordinate convention, source text/crop, and whether confidence is calibrated. A value without evidence is hard to audit.
+2. **Comparable metadata:** input and output formats, languages, table/formula/handwriting support, CPU/GPU, offline/hosted mode, license/weight terms, maintenance status, and source of each claim. Track only facts verified from official docs; unknown is a valid value.
+3. **Evaluation beyond NER:** OCR text error, field correctness, table structure/cell quality, reading order, chart values, schema validity, evidence localization, latency/cost, and robustness. Metrics should not be collapsed into one “best tool” score.
+4. **Privacy and hostile input:** dataset rights, remote processing/retention, PII/redaction, malicious files, and prompt injection in documents. Warn readers to sandbox untrusted files; do not collect or publish private examples.
+5. **Task-specific workflows:** distinguish PDF-to-structure, document field extraction, tables-to-data, chart-to-data, image-text entities, and audio/video timelines. Keep non-document modalities only when the output is grounded and structured.
+6. **Reproducible failures:** show missing-field hallucination, date/amount normalization mistakes, shifted table cells, wrong reading order, weak OCR, or incorrect citations—only using synthetic or properly licensed material, with expected vs. actual output and a documented test.
+
+Adjacent projects worth learning from include [Docling](https://github.com/docling-project/docling) and [MinerU](https://github.com/opendatalab/MinerU) for structured, agent-ready document representations; [olmOCR](https://github.com/allenai/olmocr) for quality/cost/evaluation context; [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) for language and deployment breadth; and [MarkItDown](https://github.com/microsoft/markitdown) for format conversion and security caveats. They are adjacent exemplars, not direct rankings or a live trend chart.
+
+The release adds links for [OmniDocBench](https://github.com/opendatalab/OmniDocBench), [XFUND](https://github.com/doc-analysis/XFUND), and [SROIE](https://github.com/zzzDavid/ICDAR-2019-SROIE), plus practical evaluation, provenance, and privacy guidance. These are reference resources—not scores for listed tools or proof that metrics are comparable.
 
 ## Ethical discovery loop
 
@@ -31,7 +45,21 @@ These repositories are adjacent exemplars, not all direct competitors or live tr
 7. **Use GitHub-native discovery honestly.** Keep topics accurate, enable Issues/Discussions when moderation capacity exists, respond thoughtfully, and make first contributions low-friction. Do not use star exchanges, bought engagement, mass mentions, fake accounts, or unrelated issue/PR drops.
 8. **Pursue list indexes when eligible.** Once the age and quality requirements are met, submit to the upstream [Awesome index](https://github.com/sindresorhus/awesome) as documented in [SUBMISSION.md](SUBMISSION.md). Respect its review process; inclusion is not guaranteed.
 
-## Public contribution campaign
+## Release plan
+
+Do not tag a release until its contents are intentional and checks are green. For a first useful snapshot:
+
+- Add a dated changelog and explicit snapshot limitations.
+- Include practical field guidance on evidence/provenance, evaluation, and privacy/security.
+- Add a citation file so users can cite the project and specific version.
+- Point the README to release notes and the versioned citation.
+- Run Awesome lint and the offline test suite. The link-check workflow is part of the trust signal; confirm its GitHub Actions result for the exact release commit before publishing.
+- Create an annotated `v0.1.0` tag only on the reviewed release commit after checks pass; describe it as an initial curated snapshot, not an authoritative benchmark.
+- Announce once with a concrete contribution ask (one verified gap/report/example). No star target, mass tagging, or engagement swaps.
+
+After release, maintain a regular but sustainable cadence (for example, a meaningful quarterly curation snapshot), and publish changes when they are useful—not to manufacture activity. See [SUBMISSION.md](SUBMISSION.md) for the upstream Awesome-index gate.
+
+Once the tagged release exists, announce it with one bounded ask for a verified resource, stale-link report, or evidence-backed example. Do not promise visibility, set a star target, mass-tag maintainers, or arrange engagement swaps.
 
 Invite contributors to pick a **single small task** rather than asking vaguely for stars. Suggested sequence:
 

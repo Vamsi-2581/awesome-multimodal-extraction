@@ -6,6 +6,7 @@
 
 [![awesome-lint](https://github.com/shivamnegi92/awesome-multimodal-extraction/actions/workflows/awesome-lint.yml/badge.svg)](https://github.com/shivamnegi92/awesome-multimodal-extraction/actions/workflows/awesome-lint.yml)
 [![links](https://github.com/shivamnegi92/awesome-multimodal-extraction/actions/workflows/links.yml/badge.svg)](https://github.com/shivamnegi92/awesome-multimodal-extraction/actions/workflows/links.yml)
+[![release](https://img.shields.io/github/v/release/shivamnegi92/awesome-multimodal-extraction)](https://github.com/shivamnegi92/awesome-multimodal-extraction/releases)
 
 ![Multimodal extraction: image plus text in, structured entities out](assets/demo.gif)
 
@@ -142,13 +143,26 @@ The academic line this list grew from: entity extraction from image-text pairs.
 
 - [🤗 CORD-v2](https://huggingface.co/datasets/naver-clova-ix/cord-v2) - Receipt parsing dataset for structured document extraction.
 - [🤗 FUNSD](https://huggingface.co/datasets/nielsr/funsd-layoutlmv3) - Form understanding in noisy scanned documents.
-- [🤗 DocVQA](https://huggingface.co/datasets/lmms-lab/DocVQA) - Question answering over document images.
-- [🤗 ChartQA](https://huggingface.co/datasets/HuggingFaceM4/ChartQA) - Question answering and extraction over charts.
+- [DocVQA dataset](https://huggingface.co/datasets/lmms-lab/DocVQA) - Question answering over document images.
+- [ChartQA dataset](https://huggingface.co/datasets/HuggingFaceM4/ChartQA) - Question answering and extraction over charts.
+- [OmniDocBench](https://github.com/opendatalab/OmniDocBench) - Benchmark for evaluating document parsing across diverse document types and structures.
+- [XFUND](https://github.com/doc-analysis/XFUND) - Multilingual form-understanding dataset spanning seven languages.
+- [SROIE](https://github.com/zzzDavid/ICDAR-2019-SROIE) - Receipt OCR and key-information extraction benchmark from ICDAR 2019.
+
+**Note:** these benchmarks cover different tasks and splits; their scores are not directly comparable. Check each official source for current status, terms, and metric definitions before use.
 
 ## Evaluation
 
 - [seqeval](https://github.com/chakki-works/seqeval) - Entity-level F1 evaluation for sequence labeling.
-- [nervaluate](https://github.com/MantisAI/nervaluate) - Nuanced NER evaluation (partial, exact, type) following SemEval.
+- [Nervaluate](https://github.com/MantisAI/nervaluate) - Nuanced NER evaluation (partial, exact, type) following SemEval.
+
+A useful extraction evaluation separates **what was returned** from **whether it is grounded and usable**. Match metrics to the task: OCR text error, field exact match, table-cell/structure quality, reading-order accuracy, chart-value accuracy, JSON/schema validity, and source-region localization when evidence is returned. For deployment comparisons, report latency, memory, cost, and failure rate separately from quality. State dataset/version, split, metric, normalization, model revision, hardware, and sample count; include failures and limitations. Do not compare unlike metrics or treat the synthetic receipt rows in this repository as a benchmark.
+
+**Evidence matters:** a value without its source location is hard to audit. When supported, preserve page/frame, bounding box with coordinate convention, source text/crop, and calibrated confidence only where measured. Confidence scales are not comparable across models unless calibrated and tested.
+
+**Privacy and security matter too:** check dataset/model licenses, local vs remote processing, retention, and upload terms before using real documents. Treat files and extracted text as untrusted input; consider redaction, prompt-injection exposure, and malformed or hostile files within an appropriate sandbox. Never add private documents or extracted personal data here.
+
+For release scope and limitations, see the changelog. Cite a version using the `CITATION.cff` file and its Git tag.
 
 ## Try It and Measure It
 

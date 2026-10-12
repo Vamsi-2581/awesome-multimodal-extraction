@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this curated list, please cite the version you used."
+title: "Awesome Multimodal Extraction"
+type: software
+authors:
+  - family-names: "Negi"
+    given-names: "Shivam"
+repository-code: "https://github.com/shivamnegi92/awesome-multimodal-extraction"
+abstract: >-
+  A curated, task-oriented index of models, tools, datasets, benchmarks, and
+  runnable examples for extracting structured information from images,
+  documents, audio, and video.
+license: CC0-1.0
+version: 0.1.0
+date-released: "2026-10-11"
