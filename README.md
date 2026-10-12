@@ -9,14 +9,18 @@
 
 ![Multimodal extraction: image plus text in, structured entities out](assets/demo.gif)
 
-Text-only extraction is solved enough. The hard, valuable problems now live in
-**pixels + words together**: a receipt photo, a chart in a PDF, a tweet with an
-image, a scanned form. The old multimodal-NER reading lists stopped at 2023 and
-the academic Twitter-image setup; the field has since moved to **vision-language
-models** and **document AI**. This list is practitioner-first and kept current,
-with every link verified live by CI. The [offline receipt-field evaluation](examples/README.md)
-adds an original, reproducible starting point; its synthetic scores are not
-claims about model quality.
+This list helps you turn **pixels + words into usable structure**: a receipt
+photo into fields, a PDF into a table, a chart into data, or an image-text pair
+into entities. It connects multimodal-NER research with current VLM and
+document-AI tooling. Links are checked by CI; example scores are synthetic
+demonstrations, not claims about model quality.
+
+**Choose by task:** PDF or scan to searchable text: Document AI and OCR. Receipt
+or form to fields/JSON: structured image extraction. Dense tables/layout: layout
+tools. Charts: chart extraction. Audio/video: speech and video sections.
+Image-text entities: multimodal NER. Quality checks: datasets and evaluation.
+These are navigation hints, not rankings. See the local runnable examples and
+offline evaluation; no hosted inference demo is implied.
 
 **Not sure where to start?** This picks a tool from your constraints:
 
@@ -34,7 +38,7 @@ claims about model quality.
 - [🎙️ Audio and Speech Extraction](#-audio-and-speech-extraction)
 - [🔬 Multimodal NER (Research Lineage)](#-multimodal-ner-research-lineage)
 - [📊 Datasets and Benchmarks](#-datasets-and-benchmarks)
-- [Evaluation](#-evaluation)
+- [Evaluation](#evaluation)
 - [Try It and Measure It](#try-it-and-measure-it)
 - [Papers](#papers)
 - [📝 Blogs and Notebooks](#-blogs-and-notebooks)
@@ -141,7 +145,7 @@ The academic line this list grew from: entity extraction from image-text pairs.
 - [🤗 DocVQA](https://huggingface.co/datasets/lmms-lab/DocVQA) - Question answering over document images.
 - [🤗 ChartQA](https://huggingface.co/datasets/HuggingFaceM4/ChartQA) - Question answering and extraction over charts.
 
-## 📏 Evaluation
+## Evaluation
 
 - [seqeval](https://github.com/chakki-works/seqeval) - Entity-level F1 evaluation for sequence labeling.
 - [nervaluate](https://github.com/MantisAI/nervaluate) - Nuanced NER evaluation (partial, exact, type) following SemEval.
@@ -194,9 +198,17 @@ Hands-on walkthroughs and runnable notebooks.
 
 ## Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
-The one hard rule: every entry must link to a real, maintained project and
-include a short, factual description. No dead links, no vaporware.
+Want to help make this a genuinely useful field guide? **Pick one small task and
+open a PR**—a single verified entry, dead-link fix, clearer description, or
+example/test improvement all count. First-time contributors are welcome. Read
+[CONTRIBUTING.md](CONTRIBUTING.md) for the rules and steps; open help-wanted
+issues are linked there. The [discovery and community plan](VISIBILITY.md) explains
+how to grow reach without spam or vanity metrics. Please comment before taking a
+larger task so work does not collide.
+
+Every catalog entry must link to a real project, model, or dataset and include a
+short, factual description. No dead links, vaporware, or unsupported “best”
+claims. CI checks reachability; maintainers review relevance and accuracy.
 
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](LICENSE)
 
